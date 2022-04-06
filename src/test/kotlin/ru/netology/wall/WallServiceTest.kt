@@ -1,9 +1,12 @@
 package ru.netology.wall
+
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import ru.netology.post.*
+import ru.netology.post.attachment.Graffiti
+import ru.netology.post.attachment.Note
 
 internal class WallServiceTest {
     lateinit var wallService: WallService
@@ -33,6 +36,7 @@ internal class WallServiceTest {
                 Views(33),
                 "post",
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22, 34, "ыашмо", "атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,
                 arrayOf(Reposts(55, 77)),
@@ -46,7 +50,6 @@ internal class WallServiceTest {
                 12
             )
         )
-
         assertEquals(1, wallService.getId())
     }
 
@@ -70,6 +73,7 @@ internal class WallServiceTest {
                 Views(33),
                 "post",
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22, 34, "ыашмо", "атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,
                 arrayOf(Reposts(55, 77)),
@@ -102,6 +106,7 @@ internal class WallServiceTest {
                 Views(33),
                 "post",
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22, 34, "ыашмо", "атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,
                 arrayOf(Reposts(55, 77)),
@@ -139,6 +144,7 @@ internal class WallServiceTest {
                 Views(33),
                 "post",
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22, 34, "ыашмо", "атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,
                 arrayOf(Reposts(55, 77)),
@@ -171,6 +177,7 @@ internal class WallServiceTest {
                 Views(33),
                 "post",
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22, 34, "ыашмо", "атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,
                 arrayOf(Reposts(55, 77)),

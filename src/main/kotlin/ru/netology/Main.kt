@@ -1,6 +1,7 @@
 package ru.netology
 
 import ru.netology.post.*
+import ru.netology.post.attachment.Graffiti
 import ru.netology.wall.WallService
 
 fun main(args: Array<String>) {
@@ -23,6 +24,7 @@ fun main(args: Array<String>) {
                 Views(33),//Информация о просмотрах записи. Объект с единственным полем:
                 "post",//Тип записи, может принимать следующие значения
                 PostSource("амцам", "ошатмоцутам", "ошутмутм", "втутцамт"),
+                arrayOf(Graffiti(22,34,"ыашмо","атмоуат")),
                 Geo("аотмоуашт", "32", Place(32, "тсту", 21, 23, 45, "шьшьш", 12, 11, 23, 34, 45, "рисриуа")),
                 88,//Идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем
                 arrayOf(Reposts(55, 77)),
