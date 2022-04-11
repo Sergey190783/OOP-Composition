@@ -2,51 +2,33 @@ package ru.netology.wall
 
 import ru.netology.post.*
 
-class WallService(var posts: Array<Post>) {
-    private var curId = 0
-    fun getId() = this.curId
+class WallService() {
+    private val posts:MutableList<Post> = mutableListOf()
+    private fun getId(): Int{
+        return if(posts.isNotEmpty()){
+            posts.last().id + 1
+        }else{
+            1
+        }
+    }
+    fun getPost(index: Int):Post{
+        return posts[index]
+    }
     fun add(post: Post): Post {
-        val mutablePosts = posts.toMutableList()
-        val newPost = post.copy(id = curId)
-        curId++
-        mutablePosts.add(newPost)
-        posts = mutablePosts.toTypedArray()
+        val newPost = post.copy(id = getId())
+        posts.add(newPost)
         return newPost
     }
-
     /**
      * Обновление записи по id
      */
     fun update(post: Post): Boolean {
         val index = posts.indexOfFirst { p -> p.id == post.id }
-        if (index != -1) {
-            posts[index] = posts[index].copy(
-                id = curId,
-                fromId = post.fromId,
-                createdBy = post.createdBy,
-                text = post.text,
-                replyOwnerId = post.replyOwnerId,
-                replyPostId = post.replyPostId,
-                friendsOnly = post.friendsOnly,
-                comments = post.comments,
-                copyright = post.copyright,
-                likes = post.likes,
-                reposts = post.reposts,
-                views = post.views,
-                postType = post.postType,
-                signerId = post.signerId,
-                canPin = post.canPin,
-                canDelete = post.canDelete,
-                canEdit = post.canEdit,
-                isPinned = post.isPinned,
-                markedAsAds = post.markedAsAds,
-                isFavorite = post.isFavorite,
-                donut = post.donut,
-                postponedId = post.postponedId
-            )
-            return true
+        return if (index != -1) {
+            posts[index] = post.copy(ownerId = posts[index].ownerId, date = posts[index].date)
+            true
         } else {
-            return false
+            false
         }
     }
 }
