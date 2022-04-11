@@ -5,4 +5,4 @@ data class Graffiti(
     val ownerId: Int,
     val photo130: String,
     val photo_604: String
-):Attachment("graffiti")
+)

@@ -12,4 +12,4 @@ data class Note(
     val privacyView: String,
     val canComment: Int,
     val textWiki: String,
-):Attachment("note")
+)

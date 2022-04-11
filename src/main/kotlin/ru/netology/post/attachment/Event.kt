@@ -9,4 +9,4 @@ data class Event(
     val text: String,
     val buttonText: String,
     val friends: Int,
-):Attachment("event")
+)
