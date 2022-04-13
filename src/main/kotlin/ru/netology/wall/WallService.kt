@@ -1,15 +1,25 @@
 package ru.netology.wall
 
 import ru.netology.post.*
+import ru.netology.post.comment.Comment
 
 class WallService() {
     private val posts:MutableList<Post> = mutableListOf()
+    private val comments:MutableList<Comment> = mutableListOf()
     private fun getId(): Int{
         return if(posts.isNotEmpty()){
             posts.last().id + 1
         }else{
             1
         }
+    }
+    fun createComment(comment: Comment) {
+        val index = posts.indexOfFirst { p -> p.id == comment.postId}
+         if (index != -1) {
+            comments.add(comment.copy())
+        } else{
+            throw  PostNotFoundException()
+         }
     }
     fun getPost(index: Int):Post{
         return posts[index]
