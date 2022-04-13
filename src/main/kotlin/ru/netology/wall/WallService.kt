@@ -4,31 +4,39 @@ import ru.netology.post.*
 import ru.netology.post.comment.Comment
 
 class WallService() {
-    private val posts:MutableList<Post> = mutableListOf()
-    private val comments:MutableList<Comment> = mutableListOf()
-    private fun getId(): Int{
-        return if(posts.isNotEmpty()){
+    private val posts: MutableList<Post> = mutableListOf()
+    private val comments: MutableList<Comment> = mutableListOf()
+    private fun getId(): Int {
+        return if (posts.isNotEmpty()) {
             posts.last().id + 1
-        }else{
+        } else {
             1
         }
     }
+
     fun createComment(comment: Comment) {
-        val index = posts.indexOfFirst { p -> p.id == comment.postId}
-         if (index != -1) {
+        val index = posts.indexOfFirst { p -> p.id == comment.postId }
+        if (index != -1) {
             comments.add(comment.copy())
-        } else{
+        } else {
             throw  PostNotFoundException()
-         }
+        }
     }
-    fun getPost(index: Int):Post{
+
+    fun getComment(index: Int): Comment {
+        return comments[index]
+    }
+
+    fun getPost(index: Int): Post {
         return posts[index]
     }
+
     fun add(post: Post): Post {
         val newPost = post.copy(id = getId())
         posts.add(newPost)
         return newPost
     }
+
     /**
      * Обновление записи по id
      */
@@ -41,4 +49,5 @@ class WallService() {
             false
         }
     }
+
 }
